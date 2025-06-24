@@ -5,11 +5,11 @@ namespace Quickpay.Services
 {
     public class AccountService : QuickPayRestClient
     {
-		public AccountService(string username, string password) : base(username, password)
+		public AccountService(string username, string password, string overrideBaseUri = "") : base(username, password, overrideBaseUri)
 		{
 		}
 
-		public AccountService(string apikey) : base(apikey)
+		public AccountService(string apikey, string overrideBaseUri = "") : base(apikey, overrideBaseUri)
 		{
 		}
 

@@ -11,8 +11,8 @@ namespace QuickPay.Services
 {
     public class SubscriptionsService : QuickPayRestClient
     {
-        public SubscriptionsService(string username, string password) : base(username, password) { }
-        public SubscriptionsService(string apikey) : base(apikey) { }
+        public SubscriptionsService(string username, string password, string overrideBaseUri = "") : base(username, password, overrideBaseUri) { }
+        public SubscriptionsService(string apikey, string overrideBaseUri = "") : base(apikey, overrideBaseUri) { }
 
 
         public Task<Subscription> CreateSubscription(CreateSubscriptionRequestParams requestParams)

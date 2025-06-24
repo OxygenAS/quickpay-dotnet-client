@@ -10,8 +10,8 @@ namespace Quickpay.Services
 {
     public class PaymentsService : QuickPayRestClient
     {
-        public PaymentsService(string username, string password) : base(username, password) { }
-        public PaymentsService(string apikey) : base(apikey) { }
+        public PaymentsService(string username, string password, string overrideBaseUri = "") : base(username, password,overrideBaseUri) { }
+        public PaymentsService(string apikey, string overrideBaseUri = "") : base(apikey, overrideBaseUri) { }
 
 
 		public Task<List<Payment>> GetAllPayments(PageParameters? pageParameters = null, SortingParameters? sortingParameters = null)
@@ -26,6 +26,8 @@ namespace Quickpay.Services
 
         public Task<Payment> CreatePayment(CreatePaymentRequestParams requestParams)
         {
+            var serialized = System.Text.Json.JsonSerializer.Serialize(requestParams);
+
             Action<RestRequest> prepareRequest = (RestRequest request) =>
             {
                 request.Method = Method.Post;

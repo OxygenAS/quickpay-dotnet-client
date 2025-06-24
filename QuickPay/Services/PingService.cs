@@ -6,11 +6,11 @@ namespace Quickpay.Services
 {
     public class PingService : QuickPayRestClient
     {
-		public PingService(string username, string password) : base(username, password)
+		public PingService(string username, string password, string overrideBaseUri = "") : base(username, password, overrideBaseUri)
 		{
 		}
 
-		public PingService(string apikey) : base(apikey)
+		public PingService(string apikey, string overrideBaseUri = "") : base(apikey, overrideBaseUri)
 		{
 		}
 
