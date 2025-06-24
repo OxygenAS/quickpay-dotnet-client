@@ -21,17 +21,19 @@ namespace Quickpay
 
         protected RestClient Client { get; set; }
 
-        protected QuickPayRestClient(string apikey) : this(string.Empty, apikey)
+        protected QuickPayRestClient(string apikey, string overrideBaseUri) : this(string.Empty, apikey, overrideBaseUri)
 		{
 		}
 
-        protected QuickPayRestClient (string username, string password)
+        protected QuickPayRestClient (string username, string password, string overrideBaseUri)
 		{
 			if (password == string.Empty) {
 				throw new ArgumentException ("You need to provide either a username / password or an apikey");
 			}
 
-			var restClientOptions = new RestClientOptions(BASE_URL)
+			var baseUrl = string.IsNullOrWhiteSpace(overrideBaseUri) ? BASE_URL : overrideBaseUri;
+
+			var restClientOptions = new RestClientOptions(baseUrl)
 			{
 				UserAgent = "QuickPay .Net Standard 2.0 SDK",
 				FollowRedirects = true,

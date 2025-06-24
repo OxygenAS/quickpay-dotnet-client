@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\QuickPay\QuickPay.csproj" />
   </ItemGroup>
 </Project>
